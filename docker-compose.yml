@@ -1,0 +1,66 @@
+services:
+  # -------------------------------------------------------------
+  # PostgreSQL Database Service
+  # -------------------------------------------------------------
+  db:
+    image: postgres:15-alpine
+    container_name: mindhue_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: mindhue_db
+      POSTGRES_USER: mindhue_user
+      POSTGRES_PASSWORD: mindhue_password_2026
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U mindhue_user -d mindhue_db"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # -------------------------------------------------------------
+  # Django REST API Backend Service
+  # -------------------------------------------------------------
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: mindhue_backend
+    restart: unless-stopped
+    ports:
+      - "8000:8000"
+    environment:
+      - DJANGO_DEBUG=False
+      - DJANGO_SECRET_KEY=django-insecure-who-mindhue-dr-telemedicine-screening-platform-key-2026
+      - DJANGO_ALLOWED_HOSTS=*
+      - DATABASE_URL=postgres://mindhue_user:mindhue_password_2026@db:5432/mindhue_db
+      - MINIO_ENDPOINT=host.docker.internal:9000
+      - MINIO_ACCESS_KEY=minioadmin
+      - MINIO_SECRET_KEY=minioadmin
+      - MINIO_USE_SSL=False
+      - MINIO_BUCKET_NAME=mindhue-data
+      - PORT=8000
+    depends_on:
+      db:
+        condition: service_healthy
+
+  # -------------------------------------------------------------
+  # React + Vite Frontend (Nginx) Service
+  # -------------------------------------------------------------
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+      args:
+        - VITE_API_URL=
+    container_name: mindhue_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:80"
+    depends_on:
+      - backend
+
+volumes:
+  postgres_data:

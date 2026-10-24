@@ -1,0 +1,39 @@
+# Python & Virtual Environments
+venv/
+env/
+ENV/
+*.pyc
+__pycache__/
+*.pyo
+*.pyd
+.Python
+*.db
+*.sqlite3
+
+# Node & Frontend
+node_modules/
+dist/
+dist-ssr/
+*.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE & OS
+.DS_Store
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Runtime-generated Django assets
+backend/media/*
+!backend/media/models/
+backend/media/models/*
+!backend/media/models/mindhue_efficientnet_v2_clinical_best.pth
+!backend/media/models/mindhue_multitask_clinical_best.pth
+!backend/media/models/*.json
+backend/staticfiles/

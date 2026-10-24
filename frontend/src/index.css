@@ -1,0 +1,88 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-who-blue: #005eb8;
+    --color-who-blue-dark: #003087;
+    --color-who-blue-light: #e8f1fa;
+    --color-who-red: #d32f2f;
+    --color-who-red-light: #fef2f2;
+    --color-who-black: #111827;
+    --color-who-white: #ffffff;
+    --color-who-yellow: #f59e0b;
+    --color-who-green: #10b981;
+  }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    background-color: #f8fafc;
+    color: #0f172a;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+}
+
+/* Custom scrollbars for clean clinical UI */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #f1f5f9;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Clean Clinical Card & Panel Styles */
+.who-card {
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.05), 0 1px 2px 0 rgba(0, 0, 0, 0.03);
+}
+
+.who-card-hover {
+  transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.who-card-hover:hover {
+  transform: translateY(-2px);
+  border-color: #005eb8;
+  box-shadow: 0 10px 15px -3px rgba(0, 94, 184, 0.08), 0 4px 6px -2px rgba(0, 94, 184, 0.04);
+}
+
+/* Retinal Scan Line Animation */
+@keyframes scanline {
+  0% {
+    top: 0%;
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    top: 100%;
+    opacity: 0.8;
+  }
+}
+
+.retinal-scanner-line {
+  animation: scanline 2.5s ease-in-out infinite alternate;
+}
+
+/* Emergency Red Alert Pulse */
+@keyframes red-pulse-glow {
+  0%, 100% {
+    box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4);
+  }
+  50% {
+    box-shadow: 0 0 0 8px rgba(211, 47, 47, 0);
+  }
+}
+
+.who-emergency-pulse {
+  animation: red-pulse-glow 2s infinite;
+}

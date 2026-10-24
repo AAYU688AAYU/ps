@@ -1,0 +1,152 @@
+{
+  "checkpoint": "mindhue_efficientnet_v2_clinical_best.pth",
+  "evaluation_time_sec": 15.83,
+  "single_pass": {
+    "mode": "Single-Pass",
+    "total_samples": 400,
+    "accuracy": 47.5,
+    "accuracy_ci_95": [
+      42.65,
+      52.39
+    ],
+    "qwk": 0.7489,
+    "balanced_accuracy": 47.5,
+    "macro_f1": 45.84,
+    "confusion_matrix": [
+      [
+        60,
+        9,
+        11,
+        0,
+        0
+      ],
+      [
+        30,
+        28,
+        11,
+        8,
+        3
+      ],
+      [
+        9,
+        19,
+        17,
+        17,
+        18
+      ],
+      [
+        3,
+        3,
+        12,
+        32,
+        30
+      ],
+      [
+        0,
+        2,
+        7,
+        18,
+        53
+      ]
+    ],
+    "binary_referable_dr": {
+      "binary_accuracy": 82.75,
+      "binary_accuracy_ci_95": [
+        78.74,
+        86.14
+      ],
+      "sensitivity": 85.0,
+      "sensitivity_ci_95": [
+        79.93,
+        88.96
+      ],
+      "specificity": 79.38,
+      "specificity_ci_95": [
+        72.45,
+        84.92
+      ],
+      "precision": 86.08,
+      "npv": 77.91,
+      "counts": {
+        "tp": 204,
+        "tn": 127,
+        "fp": 33,
+        "fn": 36
+      }
+    }
+  },
+  "tta_5view": {
+    "mode": "5-View TTA",
+    "total_samples": 400,
+    "accuracy": 48.25,
+    "accuracy_ci_95": [
+      43.39,
+      53.14
+    ],
+    "qwk": 0.7494,
+    "balanced_accuracy": 48.25,
+    "macro_f1": 46.29,
+    "confusion_matrix": [
+      [
+        60,
+        11,
+        8,
+        1,
+        0
+      ],
+      [
+        28,
+        29,
+        10,
+        10,
+        3
+      ],
+      [
+        12,
+        18,
+        14,
+        20,
+        16
+      ],
+      [
+        3,
+        3,
+        11,
+        35,
+        28
+      ],
+      [
+        0,
+        1,
+        8,
+        16,
+        55
+      ]
+    ],
+    "binary_referable_dr": {
+      "binary_accuracy": 82.75,
+      "binary_accuracy_ci_95": [
+        78.74,
+        86.14
+      ],
+      "sensitivity": 84.58,
+      "sensitivity_ci_95": [
+        79.47,
+        88.6
+      ],
+      "specificity": 80.0,
+      "specificity_ci_95": [
+        73.13,
+        85.46
+      ],
+      "precision": 86.38,
+      "npv": 77.58,
+      "counts": {
+        "tp": 203,
+        "tn": 128,
+        "fp": 32,
+        "fn": 37
+      }
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Git
+.git
+.gitignore
+
+# Python
+__pycache__
+*.pyc
+*.pyo
+*.pyd
+venv/
+env/
+.env
+
+# Node
+node_modules/
+dist/
+npm-debug.log*
+
+# Database & OS
+*.sqlite3
+.DS_Store
+.vscode
+.idea
